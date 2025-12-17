@@ -1,8 +1,4 @@
 node_modules
+src/generated/prisma
 .env
-node_modules
 dist
-.env.*
-npm-debug.log*
-*.log
-.aws

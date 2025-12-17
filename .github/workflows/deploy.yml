@@ -39,6 +39,17 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
           role-to-assume: arn:aws:iam::300869608277:role/DialemGithubRole
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.5.7
+
+      - name: Terraform init
+        run: terraform -chdir=infra init -input=false
+
+      - name: Terraform apply
+        run: terraform -chdir=infra apply -input=false -auto-approve
+
       - name: Login to ECR
         uses: aws-actions/amazon-ecr-login@v2
 
